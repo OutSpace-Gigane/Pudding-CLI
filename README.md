@@ -1,7 +1,6 @@
 # Introduction
 
-an Engine that helps you to make CLI-Tools  
-Advanced Alt ver of [famote-fellow](https://github.com/OutSpace-Gigane/famote-fellow)
+an Engine that helps you to make CLI-Tools (fork of [Pudding-CLI] by [OutSpace-Gigane])
 
 - Current version: (1.0)
 
@@ -11,6 +10,7 @@ Advanced Alt ver of [famote-fellow](https://github.com/OutSpace-Gigane/famote-fe
 - Uses Python so it may do your works easily.
 - Gives a Cheatsheet about ANSI Escape Codes for Making your job much easier (for Manual Configuration)
 - Open-Source ig -w-
+- Adds a config file with workspace path (as of now) included.
 
 ## Getting Started
 
@@ -22,7 +22,7 @@ You Might need Open a Terminal, then type this command:
 python puding.py
 ```
 
-(You'll need to answer the questions from the executed script btw.)
+Press the key in square brackets for the specified operation.
 
 ## Configuration
 
