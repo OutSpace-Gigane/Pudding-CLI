@@ -19,7 +19,7 @@ after the Installation go to the directory that you installed the Engine.
 You Might need Open a Terminal, then type this command:
 
 ```
-python puding.py
+python fudge.py
 ```
 
 Press the key in square brackets for the specified operation.
