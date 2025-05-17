@@ -1,7 +1,6 @@
 # Introduction
 
-an Engine that helps you to make CLI-Tools  
-Advanced Alt ver of [famote-fellow](https://github.com/OutSpace-Gigane/famote-fellow)
+an Engine that helps you to make CLI-Tools (fork of Pudding-CLI by OutSpace-Gigane)
 
 - Current version: (1.0)
 
@@ -11,6 +10,7 @@ Advanced Alt ver of [famote-fellow](https://github.com/OutSpace-Gigane/famote-fe
 - Uses Python so it may do your works easily.
 - Gives a Cheatsheet about ANSI Escape Codes for Making your job much easier (for Manual Configuration)
 - Open-Source ig -w-
+- Adds a config file with workspace path (as of now) included.
 
 ## Getting Started
 
@@ -19,10 +19,10 @@ after the Installation go to the directory that you installed the Engine.
 You Might need Open a Terminal, then type this command:
 
 ```
-python puding.py
+python fudge.py
 ```
 
-(You'll need to answer the questions from the executed script btw.)
+Press the key in square brackets for the specified operation.
 
 ## Configuration
 
@@ -33,10 +33,4 @@ So feel free to suggest, edit the code, or anything else!
 
 - It ONLY makes Standards of Python CLI-Tool Project
 - You'll need to learn too much things so i just added a "Cheatsheet" (it will shown for Manual Configuration)
-- Any Suggestions or Bugs: outspace_gigane (discord)
-
-## Kind of Facts n' Spoilers i guess
-
-- The Inspiration (Kinda) taken from ReactJS project but it works for CLI.
-- you can count this is an improved version of "famote-fellow".
-- Might make Wiki about this (How is this idea?)
+- Any Suggestions or Bugs: milkthebev13434 (discord)

@@ -1,10 +1,36 @@
 # pyright: reportUnboundVariable=false
-import os
+import os, configparser, os.path
 
 # version
 ver = "v0.0"
 # running [version] Here
-print("Running Pudding..." + ver)
+print("Running Fudge..." + ver)
+
+def MKCONF():
+    global path
+    conf = configparser.ConfigParser()
+    print("Reading config file")
+    if os.path.exists("fudge.ini"):
+        conf.read("fudge.ini")
+        path = conf.get("Main", "workspace")
+    else:
+        print("Couldnt find config file. Making one.")
+        path = input("Enter workspace path (the folder where you will store your projects, it should be full path): ")
+        conf["Main"] = {"workspace" : path}
+        with open("fudge.ini", "wt") as f:
+            conf.write(f)
+        print("Done")
+
+
+def PROJECTLIST():
+    global projects
+    os.chdir(path)
+    projects = os.listdir(path)
+    if projects == []:
+        print("No projects yet")
+    else:
+        for i in range(0, len(projects)):
+            print(str(i + 1) + ". " + projects[i])
 
 
 # x will be our filename
@@ -49,7 +75,7 @@ def PROJECT_TEMP():
                 # just choose one that's not hard tho.
                 print("[1] - Progress Bars for Loading")
                 print("[2] - Typing Speed Test")
-                PR_TEMP = int(input(">> "))
+                PR_TEMP = input(">> ")
                 if PR_TEMP == "1":
                     print("Selected 1")
                     break
@@ -80,6 +106,8 @@ def PROJECT_SETUP():
 
     # making a directory and switching to this directory
     print("creating and switching Source Directory")
+    os.system("mkdir " + PR_NAME)
+    os.chdir(PR_NAME)
     os.system("mkdir src")
     os.chdir("src")
 
@@ -117,22 +145,22 @@ def PROJECT_SETUP():
         # appling Template 2
         elif PR_TEMP == 2:
             print("choosed the template called 'Typing Test'.")
-            print("appling the code...")
+            print("applying the code...")
             with open("index.py", "a") as f:
                 # WPM testing...
                 f.write("import time\n")
                 f.write("import start\n")
                 f.write("\n")
                 f.write("start.INTRO()\n")
-                f.write("""sample = "Hello i'm a Person"\n""")
-                f.write("""print("type something LONG")\n""")
+                f.write("sample = \"Hello i'm a Person\"\n")
+                f.write("print(\"type something LONG\")\n")
                 f.write("start = time.time()\n")
-                f.write("""inputTYPE = input(">> ")\n""")
+                f.write("inputTYPE = input(\">> \")\n")
                 f.write("end = time.time()\n")
                 f.write("\n")
                 f.write("speed = len(sample) / (end - start)\n")
                 f.write(
-                    """print("Your Typing Speed is {:.2f} characters per second".format(speed))\n"""
+                    "print(\"Your Typing Speed is {:.2f} characters per second\".format(speed))\n"
                 )
     else:
         # if template Section Skipped then you may need to do everything by hand or not (whatever)
@@ -207,15 +235,15 @@ def PROJECT_SETUP():
                 print("Invaild Command")
 
     # ignore Watermark term, it just sets a starting file.
-    print("Project should be finished now setting up an Watermark file.")
+    print("Project should be finished. Setting up an Watermark file.")
     MKFILE("start.py")
     with open("start.py", "a") as f:
         f.write("# you can delete this if you want to.\n")
-        f.write("""print("")\n""")
+        f.write("print(\"\")\n")
         f.write("def INTRO():\n")
-        f.write("""   print("This Project Made With Puding Engine!")\n""")
+        f.write("   print(\"This Project Made Withe Fudge (fork of Pudding) Engine!\")\n")
         f.write(
-            """   print("If you don't want to see this, remove the file called start.py")\n"""
+            "   print(\"If you don't want to see this, remove the file called start.py\")\n"
         )
     print("Project Creation Progress is Finished, Good Luck!")
 
@@ -227,5 +255,62 @@ def MAKEPROJECT():
     PROJECT_SETUP()
 
 
+def COMMAND():
+    while True:
+        print("[n]ew project, [e]xit, [d]elete project, [l]ist projects")
+        command = input(">> ")
+        if command == "n":
+            MAKEPROJECT()
+        elif command == "e":
+            print("Goodbye.")
+            break
+        elif command == "d":
+            try:
+                PR_INDEX = int(input("Which project: ")) - 1
+            except:
+                PR_INDEX = None
+                print("Invalid project index. Selecting none.")
+            if PR_INDEX != None:
+                os.chdir(projects[PR_INDEX])
+                ls = os.listdir()
+                for i in ls:
+                    try:
+                        ls = os.listdir()
+                        os.remove(i)
+                    except IsADirectoryError:
+                        os.chdir(i)
+                        ls = os.listdir()
+                        for i in ls:
+                            try:
+                                ls = os.listdir()
+                                os.remove(i)
+                            except IsADirectoryError:
+                                os.chdir(i)
+                                ls = os.listdir()
+                                for i in ls:
+                                    os.remove(i)
+                                os.chdir("..")
+                        os.chdir("..")
+                os.chdir("..")
+                ls = os.listdir()
+                for i in ls:
+                    try:
+                        ls = os.listdir()
+                        os.rmdir(i)
+                    except OSError:
+                        os.chdir(i)
+                        ls = os.listdir()
+                        for i in ls:
+                            os.rmdir(i)
+                    os.chdir("..")
+            print("Done")
+            ls = None
+        elif command == "l":
+            PROJECTLIST()
+            
+
 # Execution of code
-MAKEPROJECT()
+MKCONF()
+PROJECTLIST()
+COMMAND()
+# MAKEPROJECT()
