@@ -33,10 +33,4 @@ So feel free to suggest, edit the code, or anything else!
 
 - It ONLY makes Standards of Python CLI-Tool Project
 - You'll need to learn too much things so i just added a "Cheatsheet" (it will shown for Manual Configuration)
-- Any Suggestions or Bugs: outspace_gigane (discord)
-
-## Kind of Facts n' Spoilers i guess
-
-- The Inspiration (Kinda) taken from ReactJS project but it works for CLI.
-- you can count this is an improved version of "famote-fellow".
-- Might make Wiki about this (How is this idea?)
+- Any Suggestions or Bugs: outspace_gigane (discord). This is not me, rather, he's the owner of the original [Pudding-CLI].
