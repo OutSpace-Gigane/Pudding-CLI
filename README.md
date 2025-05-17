@@ -1,6 +1,6 @@
 # Introduction
 
-an Engine that helps you to make CLI-Tools (fork of [Pudding-CLI] by [OutSpace-Gigane])
+an Engine that helps you to make CLI-Tools (fork of Pudding-CLI by OutSpace-Gigane)
 
 - Current version: (1.0)
 
@@ -33,4 +33,4 @@ So feel free to suggest, edit the code, or anything else!
 
 - It ONLY makes Standards of Python CLI-Tool Project
 - You'll need to learn too much things so i just added a "Cheatsheet" (it will shown for Manual Configuration)
-- Any Suggestions or Bugs: outspace_gigane (discord). This is not me, rather, he's the owner of the original [Pudding-CLI].
+- Any Suggestions or Bugs: milkthebev13434 (discord)
