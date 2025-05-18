@@ -4,20 +4,20 @@ import os, configparser, os.path
 # version
 ver = "v0.0"
 # running [version] Here
-print("Running Fudge..." + ver)
+print("Running Pudding..." + ver)
 
 def MKCONF():
     global path
     conf = configparser.ConfigParser()
     print("Reading config file")
-    if os.path.exists("fudge.ini"):
-        conf.read("fudge.ini")
+    if os.path.exists("puding.ini"):
+        conf.read("puding.ini")
         path = conf.get("Main", "workspace")
     else:
         print("Couldnt find config file. Making one.")
         path = input("Enter workspace path (the folder where you will store your projects, it should be full path): ")
         conf["Main"] = {"workspace" : path}
-        with open("fudge.ini", "wt") as f:
+        with open("puding.ini", "wt") as f:
             conf.write(f)
         print("Done")
 
@@ -241,7 +241,7 @@ def PROJECT_SETUP():
         f.write("# you can delete this if you want to.\n")
         f.write("print(\"\")\n")
         f.write("def INTRO():\n")
-        f.write("   print(\"This Project Made Withe Fudge (fork of Pudding) Engine!\")\n")
+        f.write("   print(\"This Project Made Withe Pudding Engine!\")\n")
         f.write(
             "   print(\"If you don't want to see this, remove the file called start.py\")\n"
         )
