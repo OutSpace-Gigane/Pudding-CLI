@@ -2,13 +2,14 @@
 import os
 
 # version
-ver = "v0.0"
+ver = "v1.001"
 # running [version] Here
-print("Running Pudding..." + ver)
+print("Running Pudding... " + ver)
 
 
 # x will be our filename
 def MKFILE(x):
+    # nt means windows which makes the project can run in Windwos too :)
     if os.name == "nt":
         os.system("type nul > " + x)
     else:
@@ -49,7 +50,7 @@ def PROJECT_TEMP():
                 # just choose one that's not hard tho.
                 print("[1] - Progress Bars for Loading")
                 print("[2] - Typing Speed Test")
-                PR_TEMP = int(input(">> "))
+                PR_TEMP = input(">> ")
                 if PR_TEMP == "1":
                     print("Selected 1")
                     break
@@ -57,14 +58,14 @@ def PROJECT_TEMP():
                     print("Selected 2")
                     break
                 else:
-                    print("invaild command.")
+                    print("invalid command.")
             break
         # if no, then skip this
         if PR_TE_CONST == "N" or PR_TE_CONST == "n":
             print("Skipped Project Template Section.")
             break
         else:
-            print("Invaild command, Try Again.")
+            print("Invalid command, Try Again.")
 
 
 # Sets the Project
@@ -83,7 +84,7 @@ def PROJECT_SETUP():
     os.system("mkdir src")
     os.chdir("src")
 
-    # project name
+    # Applying project name to file
     print("Applying Project Name")
     PR_NAME_F = PR_NAME + ".txt"
     os.system("touch " + PR_NAME_F)
@@ -91,124 +92,120 @@ def PROJECT_SETUP():
         f.write("as a Reminder: \n")
         f.write("The Project is called: " + PR_NAME + "\n")
 
-    # making main file
-    print("Creating index.py")
-    MKFILE("index.py")
+        # making main file
+        print("Creating index.py")
+        MKFILE("index.py")
 
-    # appling Template 1
-    if PR_TE_CONST == "Y":
-        if PR_TEMP == 1:
-            print("choosed the template called 'Progress Bars'.")
-            # tqdm is Progress bar generator basically.
-            print("Installing / Updating 'tqdm'")
-            os.system("pip install tqdm")
-            # writing the source code
-            print("appling the code...")
-            with open("index.py", "a") as f:
-                f.write("import start\n")
-                f.write("from tqdm import tqdm\n")
-                f.write("\n")
-                f.write("start.INTRO()\n")
-                f.write("# 'x' is the value\n")
-                f.write("x = 10000\n")
-                f.write("for i in tqdm(range(x)):\n")
-                f.write("   pass\n")
-            print("Completed!")
-        # appling Template 2
-        elif PR_TEMP == 2:
-            print("choosed the template called 'Typing Test'.")
-            print("appling the code...")
-            with open("index.py", "a") as f:
-                # WPM testing...
-                f.write("import time\n")
-                f.write("import start\n")
-                f.write("\n")
-                f.write("start.INTRO()\n")
-                f.write("""sample = "Hello i'm a Person"\n""")
-                f.write("""print("type something LONG")\n""")
-                f.write("start = time.time()\n")
-                f.write("""inputTYPE = input(">> ")\n""")
-                f.write("end = time.time()\n")
-                f.write("\n")
-                f.write("speed = len(sample) / (end - start)\n")
-                f.write(
-                    """print("Your Typing Speed is {:.2f} characters per second".format(speed))\n"""
-                )
-    else:
-        # if template Section Skipped then you may need to do everything by hand or not (whatever)
-        print("Template Section Skipped, Dropping to Manual Configuration.")
-        print("Do you want to change the file name? [Y / N]")
-        while True:
-            RNAME_CONST = input(">> ")
-            if RNAME_CONST == "Y" or RNAME_CONST == "y":
-                print("New File Name")
-                RNAME = input(">> ")
-                RNAME_TRUE_OR_FALSE = True
-                RNAME = RNAME + ".py"
-                os.rename("index.py", RNAME)
-                break
-            elif RNAME_CONST == "N" or RNAME_CONST == "n":
-                print("Skipped Section: Changing File Name")
-                break
-            else:
-                print("Command Not Found")
-        # rendering some text to index.py or whatever else idc.
-        print("Configuring main file.")
-        if RNAME_TRUE_OR_FALSE:
-            with open(RNAME, "a") as f:
-                f.write("import start\n")
-                f.write("start.INTRO()\n")
-        else:
-            with open("index.py", "a") as f:
-                f.write("import start\n")
-                f.write("start.INTRO()\n")
-        # importing modules and cheatsheets.
-        print("Do you want any module(s)?")
-        while True:
-            CONSTMODULE = input(">> ")
-            if CONSTMODULE == "Y" or CONSTMODULE == "y":
-                print("You Should put COMMA between module names.")
-                MODULE = input(">> ")
-                # import modules Section
-                if RNAME_TRUE_OR_FALSE:
-                    print("importing modules")
-                    with open(RNAME, "a") as f:
-                        f.write("import " + MODULE + "\n")
+        # appling Template 1
+        if PR_TE_CONST == "Y" or PR_TE_CONST == "y":
+            if PR_TEMP == "1":
+                print("choosed the template called 'Progress Bars'.")
+                # tqdm is Progress bar generator basically.
+                print("Installing / Updating 'tqdm'")
+                os.system("pip install tqdm")
+                # writing the source code (simplier than previous version.)
+                print("appling the code...")
+                # Shorter code to export, see SAMPLE Directory of Project for more info
+                with (
+                    open("../SAMPLE/prgbars.py", "r") as f1,
+                    open("index.py", "a") as f2,
+                ):
+                    for line in f1:
+                        f2.write(line)
+                print("Completed!")
+            # appling Template 2
+            elif PR_TEMP == "2":
+                print("choosed the template called 'Typing Test'.")
+                print("appling the code...")
+                with (
+                    open("../SAMPLE/wpm-test.py", "r") as f1,
+                    open("index.py", "a") as f2,
+                ):
+                    for line in f1:
+                        f2.write(line)
+        elif PR_TE_CONST == "N" or PR_TE_CONST == "n":
+            # if template Section Skipped then you may need to do everything by hand or not (whatever)
+            print("Template Section Skipped, Dropping to Manual Configuration.")
+            print("Do you want to change the file name? [Y / N]")
+            while True:
+                # ask if user wants to change name of file
+                RNAME_CONST = input(">> ")
+                if RNAME_CONST == "Y" or RNAME_CONST == "y":
+                    print("New File Name")
+                    RNAME = input(">> ")
+                    RNAME_TRUE_OR_FALSE = True
+                    RNAME = RNAME + ".py"
+                    os.rename("index.py", RNAME)
+                    break
+                elif RNAME_CONST == "N" or RNAME_CONST == "n":
+                    print("Skipped Section: Changing File Name")
                     break
                 else:
-                    print("importing modules")
-                    with open("index.py", "a") as f:
-                        f.write("import " + MODULE + "\n")
-                    break
-            elif CONSTMODULE == "N" or CONSTMODULE == "n":
-                print("skipped Module Section")
-                break
+                    print("Command Not Found")
+            # rendering some text to index.py or whatever else idc.
+            print("Configuring main file.")
+            if RNAME_TRUE_OR_FALSE:
+                with open(RNAME, "a") as f:
+                    f.write("import start\n")
+                    f.write("start.INTRO()\n")
             else:
-                print("Invaild Command")
-
-        # import a cheatsheet
-        print("Do you want to get a Cheatsheet?")
-        while True:
-            CONSTCS = input(">> ")
-            if CONSTCS == "Y" or CONSTCS == "y":
-                print("Making file called cheatsheet.txt")
-                MKFILE("cheatsheet.txt")
-                print("Printing cheatsheet link to 'cheatsheet.txt'")
-                with open("cheatsheet.txt", "a") as f:
-                    f.write(
-                        "https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797\n"
-                    )
-                    f.write("\n")
+                with open("index.py", "a") as f:
+                    f.write("import start\n")
+                    f.write("start.INTRO()\n")
+            # importing modules and cheatsheets.
+            print("Do you want any module(s)?")
+            while True:
+                CONSTMODULE = input(">> ")
+                if CONSTMODULE == "Y" or CONSTMODULE == "y":
+                    print("You Should put COMMA between module names.")
+                    MODULE = input(">> ")
+                    # import modules Section
+                    if RNAME_TRUE_OR_FALSE:
+                        print("importing modules")
+                        with open(RNAME, "a") as f:
+                            f.write("import " + MODULE + "\n")
+                        break
+                    else:
+                        print("importing modules")
+                        with open("index.py", "a") as f:
+                            f.write("import " + MODULE + "\n")
+                        break
+                elif CONSTMODULE == "N" or CONSTMODULE == "n":
+                    print("skipped Module Section")
                     break
-            elif CONSTCS == "N" or CONSTCS == "n":
-                print("Skipped Cheatsheet Section")
-                break
-            else:
-                print("Invaild Command")
+                else:
+                    print("Invalid Command")
 
+            # import a cheatsheet
+            print("Do you want to get a Cheatsheet?")
+            while True:
+                CONSTCS = input(">> ")
+                if CONSTCS == "Y" or CONSTCS == "y":
+                    print("Making file called cheatsheet.txt")
+                    MKFILE("cheatsheet.txt")
+                    print("Printing cheatsheet link to 'cheatsheet.txt'")
+                    with (
+                        open("../SAMPLE/cheatsheet.txt", "r") as f1,
+                        open("cheatsheet.txt", "w") as f2,
+                    ):
+                        for line in f1:
+                            f2.write(line)
+                        break
+                elif CONSTCS == "N" or CONSTCS == "n":
+                    print("Skipped Cheatsheet Section")
+                    break
+                else:
+                    print("Invalid Command")
+
+    print("Setting up an Enginner.")
+    MKFILE("enginner.py")
+    with open("../SAMPLE/enginner.py", "r") as f1, open("enginner.py", "a") as f2:
+        for line in f1:
+            f2.write(line)
     # ignore Watermark term, it just sets a starting file.
     print("Project should be finished now setting up an Watermark file.")
     MKFILE("start.py")
+    # should replace when it makes troubles
     with open("start.py", "a") as f:
         f.write("# you can delete this if you want to.\n")
         f.write("""print("")\n""")

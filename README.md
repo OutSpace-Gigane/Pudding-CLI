@@ -3,7 +3,7 @@
 an Engine that helps you to make CLI-Tools  
 Advanced Alt ver of [famote-fellow](https://github.com/OutSpace-Gigane/famote-fellow)
 
-- Current version: (1.0)
+- Current version: (1.001)
 
 ## Features
 
@@ -37,6 +37,9 @@ So feel free to suggest, edit the code, or anything else!
 
 ## Kind of Facts n' Spoilers i guess
 
-- The Inspiration (Kinda) taken from ReactJS project but it works for CLI.
+- The Inspiration (Kinda) taken from [ReactJS](https://react.dev) project but it works for CLI.
 - you can count this is an improved version of "famote-fellow".
 - Might make Wiki about this (How is this idea?)
+
+> [!WARNING]
+> If you have any Folder / Directory called: "src", Delete it. Since the Script makes a Directory called "src".
